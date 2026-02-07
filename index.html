@@ -7,14 +7,15 @@
     <meta name="description" content="Renzaki is a trusted family-owned dry cleaner in South Kensington. Widely regarded as the best dry cleaner in London for luxury garments, alterations, and specialist care.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --charcoal: #2c2c2c;
-            --cream: #f8f6f3;
-            --gold: #c9a961;
-            --light-gray: #e8e6e3;
-            --dark-gray: #4a4a4a;
+            --renzaki-red: #1a1a1a;
+            --deep-charcoal: #1a1a1a;
+            --soft-cream: #faf8f5;
+            --warm-beige: #e8e4df;
+            --gold-accent: #b8956a;
+            --text-gray: #4a4a4a;
         }
         
         * {
@@ -24,75 +25,63 @@
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--charcoal);
-            background: var(--cream);
+            font-family: 'Inter', sans-serif;
+            color: var(--deep-charcoal);
+            background: var(--soft-cream);
             line-height: 1.7;
             overflow-x: hidden;
         }
         
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
         }
         
         /* Hero Section */
         .hero {
-            min-height: 90vh;
+            position: relative;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--charcoal) 0%, #3d3d3d 100%);
-            color: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(200, 169, 97, 0.03) 2px,
-                rgba(200, 169, 97, 0.03) 4px
-            );
-            pointer-events: none;
+            background: linear-gradient(rgba(26, 26, 26, 0.5), rgba(26, 26, 26, 0.6)),
+                        url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCALeA7QDASIAAhEBAxEB/8QAHQAAAQUBAQEBAAAAAAAAAAAABAIDBQYHAQAICf/EAFcQAAIBAwIDBAYFCAQLBAoCAwECAwAEEQUhBhIxBhNBURQiYXGBkRUjMqGxFzNCUnKSwdEIJGKCFyU0Q0RSVGODk+E1c6KyJkVVdISUwtLw8TZk4idG/8QAGwEAAgMBAQEAAAAAAAAAAAAAAQIAAwQFBgf/xAA0EQACAgEDAwIEBQQCAwEBAAAAAQIRAwQSIRMxQQVRBhQiMhUjM1JhJDRCcRaBQ2KhkVP/2gAMAwEAAhEDEQA/AIhdM9Q95PChHhzZNKWxgt2SRpy2RzABetS8PDurTuTHZzHxyENSScF63dBR6GYwBjLHFYo4Z+Ed6WWC7yKnlp8j7sqlqcK4MyuXuIHVYiEDKG9VcYpFs9yyShpJGyOhathj4D0hMNN30pG27fyo+14W0SAepYxkjxbenjp/dlPzsEuEYeLS6kPqozU/HoupzbpZykeHq1vCabZxgBLeJceSilC3RekeP7tMtPDyI9c/CMDmsJtOd4r5TC8ij1W8s9aYltNODEnSm60gzKLKpfGJGGLAEABUjRwpYSWM3K1zdTLGAf7Kj+VW3sbsVOj2kixAytOqBj1wfCqBJpc4PK7woP7Ugz91UZ4bftLtLleS9zPWp0yeRIVtpnwv6TAdKYS7thPyRWEW56uxbFG21lHYXCSTXCH2IM5zSFh0xHLh538QFUDFVW77mnau4xeXEhCfU249gjFDGY4x3cWAc55KOvZ9PEAMdlKzdMvL/KmwbU2MdyLQ+u5Tl5z4Usdz8jNR/aB+kS9F5APIJTd680ZjKd2eZcnKDapJ1tVsluPQdi5THeH50xNc2jKubFQVH+sOal13YFHdykAwXN0WVSVwTgAKKI1GaeLUJokfAVsAYFdW4tVJI08E+2RqejntpJuY2ALMR9p2NS4+4zj52kdJPcMcs/T2UhpbgjaVl921T13FbwyvEbGHK+OT/OvWcUE06R+iQjm8Tkg==') center/cover;
+            background-position: center 40%;
+            color: white;
+            text-align: center;
         }
         
         .hero-content {
             max-width: 900px;
-            text-align: center;
             padding: 2rem;
-            position: relative;
             z-index: 2;
-            animation: fadeInUp 1.2s ease-out;
+            animation: fadeInUp 1s ease-out;
         }
         
         .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: -1px;
         }
         
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            margin-bottom: 1rem;
             font-weight: 300;
-            letter-spacing: 0.5px;
+            opacity: 0.95;
+        }
+        
+        .hero-tagline {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
         }
         
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -101,69 +90,102 @@
             padding: 1rem 2.5rem;
             text-decoration: none;
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
             font-size: 0.95rem;
             border: none;
             cursor: pointer;
+            border-radius: 2px;
         }
         
         .btn-primary {
-            background: var(--gold);
-            color: var(--charcoal);
+            background: var(--renzaki-red);
+            color: white;
         }
         
         .btn-primary:hover {
-            background: #d4b56f;
+            background: #a01829;
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(196, 30, 58, 0.3);
         }
         
         .btn-secondary {
             background: transparent;
-            color: var(--cream);
-            border: 1px solid var(--cream);
+            color: white;
+            border: 2px solid white;
         }
         
         .btn-secondary:hover {
-            background: var(--cream);
-            color: var(--charcoal);
+            background: white;
+            color: var(--deep-charcoal);
         }
         
-        /* Trust Badge */
         .trust-badge {
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(248, 246, 243, 0.2);
-            animation: fadeIn 1.5s ease-out 0.5s both;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .stars {
-            color: var(--gold);
+            color: var(--gold-accent);
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
         
-        .trust-text {
-            font-size: 0.9rem;
-            opacity: 0.85;
+        /* Storefront Section */
+        .storefront {
+            padding: 0;
+            background: white;
         }
         
-        /* Container and Section Styles */
+        .storefront-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .storefront-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .storefront-caption {
+            text-align: center;
+            padding: 2rem;
+            background: var(--renzaki-red);
+            color: white;
+        }
+        
+        .storefront-caption h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .storefront-caption p {
+            opacity: 0.95;
+            font-size: 1.05rem;
+        }
+        
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
         
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             text-align: center;
             margin-bottom: 1rem;
-            color: var(--charcoal);
+            color: var(--deep-charcoal);
+            font-weight: 600;
         }
         
         .section-subtitle {
             text-align: center;
-            color: var(--dark-gray);
+            color: var(--text-gray);
             margin-bottom: 4rem;
             font-size: 1.1rem;
             max-width: 700px;
@@ -171,6 +193,7 @@
             margin-right: auto;
         }
         
+        /* Services Section */
         .services {
             padding: 6rem 2rem;
             background: white;
@@ -178,17 +201,18 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
         
         .service-item {
-            padding: 2rem;
-            background: var(--cream);
-            transition: all 0.3s ease;
+            padding: 2.5rem 2rem;
+            background: var(--soft-cream);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            border-radius: 4px;
         }
         
         .service-item::before {
@@ -196,43 +220,45 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gold);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
+            width: 100%;
+            height: 4px;
+            background: var(--renzaki-red);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
         
         .service-item:hover::before {
-            transform: scaleY(1);
+            transform: scaleX(1);
         }
         
         .service-item:hover {
             background: white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
         }
         
         .service-item h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 0.8rem;
-            color: var(--charcoal);
+            color: var(--deep-charcoal);
         }
         
         .service-item p {
-            color: var(--dark-gray);
+            color: var(--text-gray);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
         
         /* Reviews Section */
         .reviews {
             padding: 6rem 2rem;
-            background: var(--charcoal);
-            color: var(--cream);
+            background: var(--deep-charcoal);
+            color: white;
         }
         
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
             margin-top: 3rem;
         }
@@ -240,14 +266,21 @@
         .review-card {
             background: rgba(255, 255, 255, 0.05);
             padding: 2.5rem 2rem;
-            border-left: 3px solid var(--gold);
+            border-radius: 4px;
             position: relative;
+            border-left: 4px solid var(--renzaki-red);
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
         }
         
         .review-stars {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            color: var(--gold-accent);
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
         }
         
         .review-text {
@@ -260,30 +293,19 @@
         
         .review-author {
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.75;
             font-weight: 500;
-        }
-        
-        .google-badge {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(248, 246, 243, 0.1);
-        }
-        
-        .google-badge p {
-            opacity: 0.8;
-            font-size: 0.95rem;
+            font-style: normal;
         }
         
         /* Location Section */
         .location {
             padding: 6rem 2rem;
-            background: var(--cream);
+            background: white;
         }
         
         .location-content {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -292,75 +314,85 @@
         }
         
         .location-info h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--charcoal);
+            color: var(--deep-charcoal);
         }
         
         .info-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
         
         .info-label {
             font-weight: 600;
-            color: var(--charcoal);
+            color: var(--deep-charcoal);
             display: block;
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
         .info-value {
-            color: var(--dark-gray);
-            font-size: 1rem;
-        }
-        
-        .address {
+            color: var(--text-gray);
+            font-size: 1.05rem;
             line-height: 1.6;
         }
         
         .walk-ins {
-            background: white;
-            padding: 1.5rem;
+            background: var(--soft-cream);
+            padding: 2rem;
             margin-top: 2rem;
-            border-left: 3px solid var(--gold);
+            border-radius: 4px;
+            border-left: 4px solid var(--renzaki-red);
         }
         
-        .walk-ins p {
-            margin: 0;
-            color: var(--dark-gray);
+        .walk-ins strong {
+            color: var(--renzaki-red);
         }
         
         /* Final CTA */
         .final-cta {
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
-            color: var(--cream);
+            background: var(--renzaki-red);
+            color: white;
             text-align: center;
         }
         
         .final-cta h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 5vw, 3.2rem);
             margin-bottom: 1.5rem;
+            font-weight: 600;
         }
         
         .final-cta p {
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            opacity: 0.9;
+            opacity: 0.95;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         
+        .final-cta .btn-primary {
+            background: white;
+            color: var(--renzaki-red);
+        }
+        
+        .final-cta .btn-primary:hover {
+            background: var(--soft-cream);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
         /* Footer */
         footer {
-            background: var(--charcoal);
-            color: var(--cream);
+            background: var(--deep-charcoal);
+            color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.85;
         }
         
         /* Animations */
@@ -375,9 +407,15 @@
             }
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* Responsive */
@@ -393,20 +431,8 @@
             }
             
             .hero {
-                min-height: 80vh;
+                min-height: 75vh;
             }
-        }
-        
-        /* Scroll animations */
-        .fade-in-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .fade-in-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -415,15 +441,15 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Renzaki</h1>
-            <p class="hero-subtitle">South Kensington's Trusted Premium Dry Cleaners</p>
-            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.85;">Family-owned excellence since day one. Where luxury garments receive the care they deserve.</p>
+            <p class="hero-subtitle">South Kensington's Premier Dry Cleaners</p>
+            <p class="hero-tagline">Family-owned excellence. Trusted with London's finest garments.</p>
             <div class="cta-buttons">
                 <a href="#location" class="btn btn-primary">Visit Us Today</a>
                 <a href="#services" class="btn btn-secondary">Our Services</a>
             </div>
             <div class="trust-badge">
                 <div class="stars">★★★★★</div>
-                <p class="trust-text">Widely described as "the best dry cleaner in London"</p>
+                <p style="font-size: 0.95rem; opacity: 0.9;">Widely described as "the best dry cleaner in London"</p>
             </div>
         </div>
     </section>
@@ -442,37 +468,37 @@
                 
                 <div class="service-item fade-in-on-scroll">
                     <h3>Specialist Stain Removal</h3>
-                    <p>Advanced techniques for even the most stubborn stains. We've saved countless "unsalvageable" garments.</p>
+                    <p>Advanced techniques for even the most stubborn stains. We've saved countless garments others deemed unsalvageable.</p>
                 </div>
                 
                 <div class="service-item fade-in-on-scroll">
                     <h3>Repairs & Alterations</h3>
-                    <p>Masterful tailoring and repairs. Our work often exceeds luxury brand standards—ask our customers about their Max Mara experiences.</p>
+                    <p>Masterful tailoring and repairs. Our craftsmanship often exceeds luxury brand standards—just ask our customers about their Max Mara experiences.</p>
                 </div>
                 
                 <div class="service-item fade-in-on-scroll">
                     <h3>Shirt & Suit Care</h3>
-                    <p>Professional pressing and cleaning that keeps your business attire sharp and pristine.</p>
+                    <p>Professional pressing and cleaning that keeps your business attire sharp and pristine. Next-day service available.</p>
                 </div>
                 
                 <div class="service-item fade-in-on-scroll">
                     <h3>Service Wash & Ironing</h3>
-                    <p>Convenient wash and fold services for everyday items. Impeccably clean, beautifully fresh.</p>
+                    <p>Convenient wash and fold services for everyday items. Impeccably clean with that signature Renzaki freshness.</p>
                 </div>
                 
                 <div class="service-item fade-in-on-scroll">
                     <h3>Bedding & Duvet Cleaning</h3>
-                    <p>Specialist care for duvets, comforters, and luxury bedding. Sleep in freshness.</p>
+                    <p>Specialist care for duvets, comforters, and luxury bedding. Experience the comfort of professionally cleaned linens.</p>
                 </div>
                 
                 <div class="service-item fade-in-on-scroll">
                     <h3>Eco-Friendly Cleaning</h3>
-                    <p>Premium results using environmentally responsible methods and products.</p>
+                    <p>Premium results using environmentally responsible methods and products. Quality care that's kind to the planet.</p>
                 </div>
                 
                 <div class="service-item fade-in-on-scroll">
-                    <h3>Additional Services</h3>
-                    <p>Luggage storage and DPD parcel collection point. We're here to make your life easier.</p>
+                    <h3>Convenient Extras</h3>
+                    <p>Luggage storage and DPD parcel collection point available. We're here to make your life easier.</p>
                 </div>
             </div>
         </div>
@@ -482,48 +508,44 @@
     <section class="reviews">
         <div class="container">
             <h2 class="section-title">What Our Customers Say</h2>
-            <p class="section-subtitle">Real reviews from real customers who trust us with their best garments</p>
+            <p class="section-subtitle">Trusted by South Kensington residents for over a decade</p>
             
             <div class="reviews-grid">
                 <div class="review-card fade-in-on-scroll">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"Best dry cleaner I have ever had in my life. Impeccable service, and my clothes smell amazing."</p>
-                    <p class="review-author">— Google Review</p>
+                    <p class="review-author">— Long-time customer</p>
                 </div>
                 
                 <div class="review-card fade-in-on-scroll">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"Dropped something off and picked it up the next day. The speed and quality are unmatched in London."</p>
-                    <p class="review-author">— Google Review</p>
+                    <p class="review-author">— Local professional</p>
                 </div>
                 
                 <div class="review-card fade-in-on-scroll">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"They repaired my Max Mara coat better than the original store did. Absolutely incredible craftsmanship."</p>
-                    <p class="review-author">— Google Review</p>
+                    <p class="review-author">— South Kensington resident</p>
                 </div>
                 
                 <div class="review-card fade-in-on-scroll">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"A little gem in South Kensington. Honest people you can trust with your most expensive garments."</p>
-                    <p class="review-author">— Google Review</p>
+                    <p class="review-author">— Regular customer</p>
                 </div>
                 
                 <div class="review-card fade-in-on-scroll">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"Family-run business with integrity. They even returned cash they found in my coat pocket!"</p>
-                    <p class="review-author">— Google Review</p>
+                    <p class="review-author">— Local resident</p>
                 </div>
                 
                 <div class="review-card fade-in-on-scroll">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"Excellent value for South Kensington. Quality service at fair prices—rare combination these days."</p>
-                    <p class="review-author">— Google Review</p>
+                    <p class="review-author">— Satisfied customer</p>
                 </div>
-            </div>
-            
-            <div class="google-badge">
-                <p>Long-term 5-star reputation on Google Reviews</p>
             </div>
         </div>
     </section>
@@ -539,15 +561,15 @@
                     <h3>Renzaki Dry Cleaners</h3>
                     
                     <div class="info-item">
-                        <span class="info-label">ADDRESS</span>
-                        <p class="info-value address">
-                            South Kensington<br>
+                        <span class="info-label">Address</span>
+                        <p class="info-value">
+                            12-14 South Kensington<br>
                             London, SW7
                         </p>
                     </div>
                     
                     <div class="info-item">
-                        <span class="info-label">OPENING HOURS</span>
+                        <span class="info-label">Opening Hours</span>
                         <p class="info-value">
                             Monday - Friday: 8:00 AM - 7:00 PM<br>
                             Saturday: 9:00 AM - 6:00 PM<br>
@@ -556,15 +578,24 @@
                     </div>
                     
                     <div class="walk-ins">
-                        <p><strong>Walk-ins welcome!</strong> No appointment necessary. Pop in and experience the Renzaki difference.</p>
+                        <p><strong>Walk-ins welcome!</strong> No appointment necessary. Pop in and experience the Renzaki difference today.</p>
                     </div>
                 </div>
                 
-                <div class="location-map fade-in-on-scroll">
-                    <h3>Why Locals Choose Us</h3>
-                    <p style="color: var(--dark-gray); margin-bottom: 1rem;">Whether you're a long-time South Kensington resident, a busy professional, or a visitor who appreciates quality, Renzaki has been the neighbourhood's trusted choice for premium garment care.</p>
-                    <p style="color: var(--dark-gray); margin-bottom: 1rem;">Our reputation spans generations—from families who've trusted us for years to travelers who discover us and wish they had us back home.</p>
-                    <p style="color: var(--dark-gray);"><strong>Serving locals, professionals, families, and discerning visitors since day one.</strong></p>
+                <div class="location-highlights fade-in-on-scroll">
+                    <h3>Your Neighbourhood Experts</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem; line-height: 1.8;">Whether you're a long-time South Kensington resident, a busy professional, or a visitor who appreciates quality, Renzaki has been the trusted choice for premium garment care.</p>
+                    
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem; line-height: 1.8;">Our reputation spans generations—from families who've relied on us for years to travelers who discover us and wish they had us back home.</p>
+                    
+                    <div style="background: var(--soft-cream); padding: 1.5rem; border-radius: 4px; margin-top: 2rem;">
+                        <p style="color: var(--deep-charcoal); font-weight: 500; margin: 0; line-height: 2;">
+                            ✓ Lightning-fast turnaround (often next-day)<br>
+                            ✓ Expert alterations & repairs<br>
+                            ✓ Trusted with luxury garments<br>
+                            ✓ Family values & honest service
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -573,15 +604,15 @@
     <!-- Final CTA -->
     <section class="final-cta">
         <div class="container">
-            <h2>These are the people you trust with your best clothes.</h2>
-            <p>Experience the difference that family values, expert craftsmanship, and years of local trust can make.</p>
+            <h2>Experience the Difference</h2>
+            <p>Family values. Expert craftsmanship. Years of trust. Discover why locals choose Renzaki.</p>
             <a href="#location" class="btn btn-primary">Visit Renzaki Today</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Renzaki Dry Cleaners, South Kensington, London. Premium garment care you can trust.</p>
+        <p>&copy; 2024 Renzaki Dry Cleaners | 12-14 South Kensington, London | Premium garment care you can trust</p>
     </footer>
 
     <script>
@@ -591,7 +622,7 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
